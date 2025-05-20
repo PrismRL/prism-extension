@@ -1,0 +1,87 @@
+{
+  "Component": {
+    "prefix": "NewComponent",
+    "description": "Boilerplate for Components",
+    "isFileTemplate": true,
+    "body": [
+      "--- @class $1 : Component",
+      "local $1 = prism.Component:extend \"$1\"",
+      "",
+      "function $1:__new()",
+      "\t$2",
+      "end",
+      "",
+      "return $1"
+    ]
+  },
+  "Actor": {
+    "prefix": "NewActor",
+    "description": "Boilerplate for Actors",
+    "isFileTemplate": true,
+    "body": [
+      "--- @class $1 : Actor",
+      "local $1 = prism.Actor:extend \"$1\"",
+      "",
+      "function $1:initialize()",
+      "\treturn {",
+      "\t\t$2",
+      "\t}",
+      "end",
+      "",
+      "return $1"
+    ]
+  },
+  "Cell": {
+    "prefix": "NewCell",
+    "description": "Boilerplate for Cells",
+    "isFileTemplate": true,
+    "body": [
+      "--- @class $1 : Cell",
+      "local $1 = prism.Cell:extend \"$1\"",
+      "",
+      "function $1:initialize()",
+      "\treturn {",
+      "\t\tprism.components.Collider({ allowedMovetypes = { $2 }})",
+      "\t\t$2",
+      "\t}",
+      "end",
+      "",
+      "return $1"
+    ]
+  },
+  "Action": {
+    "prefix": "NewAction",
+    "description": "Boilerplate for Actions",
+    "isFileTemplate": true,
+    "body": [
+      "--- @class $1 : Action",
+      "local $1 = prism.Action:extend \"$1\"",
+      "$1.targets = { $2 }",
+      "",
+      "function $1:_canPerform()",
+      "\t$2",
+      "end",
+      "",
+      "function $1:_perform()",
+      "\t$3",
+      "end",
+      "",
+      "return $1"
+    ]
+  },
+  "Target": {
+    "prefix": "NewTarget",
+    "description": "Boilerplate for Target",
+    "isFileTemplate": true,
+    "body": [
+      "--- @class $1 : Target",
+      "local $1 = prism.Target:extend \"$1\"",
+      "",
+      "function $1:validate(owner, targetObject, targets)",
+      "\t$2",
+      "end",
+      "",
+      "return $1"
+    ]
+  }
+}
