@@ -3,7 +3,7 @@
   "displayName": "Prism RL",
   "description": "Snippets for the Prism roguelike engine.",
   "publisher": "prismrl",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": "https://github.com/prismrl/prism-extension",
   "engines": {
     "vscode": "^1.100.0"
