@@ -5,10 +5,11 @@
     "isFileTemplate": true,
     "body": [
       "--- @class $1 : Component",
+      "--- @overload fun($2): $1",
       "local $1 = prism.Component:extend \"$1\"",
       "",
-      "function $1:__new()",
-      "\t$2",
+      "function $1:__new($2)",
+      "\t$3",
       "end",
       "",
       "return $1"
@@ -19,16 +20,12 @@
     "description": "Boilerplate for Actors",
     "isFileTemplate": true,
     "body": [
-      "--- @class $1 : Actor",
-      "local $1 = prism.Actor:extend \"$1\"",
-      "",
-      "function $1:initialize()",
-      "\treturn {",
+      "prism.registerActor(\"$1\", function()",
+      "\treturn prism.Actor.fromComponents {",
+      "\t\tprism.components.Name(\"$1\"),",
       "\t\t$2",
       "\t}",
-      "end",
-      "",
-      "return $1"
+      "end)"
     ]
   },
   "Cell": {
@@ -36,17 +33,12 @@
     "description": "Boilerplate for Cells",
     "isFileTemplate": true,
     "body": [
-      "--- @class $1 : Cell",
-      "local $1 = prism.Cell:extend \"$1\"",
-      "",
-      "function $1:initialize()",
-      "\treturn {",
-      "\t\tprism.components.Collider({ allowedMovetypes = { $2 }})",
+      "prism.registerCell(\"$1\", function()",
+      "\treturn prism.Cell.fromComponents {",
+      "\t\tprism.components.Name(\"$1\"),",
       "\t\t$2",
       "\t}",
-      "end",
-      "",
-      "return $1"
+      "end)"
     ]
   },
   "Action": {
@@ -58,12 +50,14 @@
       "local $1 = prism.Action:extend \"$1\"",
       "$1.targets = { $2 }",
       "",
-      "function $1:_canPerform()",
-      "\t$2",
+      "--- @param level Level",
+      "function $1:canPerform(level, $3)",
+      "\t$4",
       "end",
       "",
-      "function $1:_perform()",
-      "\t$3",
+      "--- @param level Level",
+      "function $1:perform(level, $5)",
+      "\t$6",
       "end",
       "",
       "return $1"
@@ -74,12 +68,20 @@
     "description": "Boilerplate for Target",
     "isFileTemplate": true,
     "body": [
-      "--- @class $1 : Target",
-      "local $1 = prism.Target:extend \"$1\"",
+      "prism.registerTarget(\"$1\", function()",
+      "\treturn prism.Target($2):$3",
+      "end)"
+    ]
+  },
+  "System": {
+    "prefix": "NewSystem",
+    "description": "Boilerplate for Systems",
+    "isFileTemplate": true,
+    "body": [
+      "--- @class $1 : System",
+      "local $1 = prism.System:extend \"$1\"",
       "",
-      "function $1:validate(owner, targetObject, targets)",
-      "\t$2",
-      "end",
+      "$2",
       "",
       "return $1"
     ]
